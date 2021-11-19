@@ -1,5 +1,6 @@
 import React from 'react'
 import ProgressBar from '../Progress/ProgressBar'
+import TextRating from '../TextRating/TextRating';
 import './Delivery.css'
 
 export const Delivery = () => {
@@ -11,7 +12,10 @@ export const Delivery = () => {
         <div className="data-cont">
             <div className="data-head">
                 <div><img src="https://lh3.googleusercontent.com/proxy/haYPGaKN5zGjNoBUCNtF9IBtB1O5zBqwUHIct_xIFcxjZLNB-eBU2_dp2QMRca1IqviPCJwLS4ymWw-GPYgBOHQzAt5swi7JcYXsTDbWVWxybEA98P096rSTMKXm8isCY4dxW-8wRiU5Mw5DZvnqHIM7apWf" alt="" /></div>
-                <div className="data-head-text"><div>DTDC</div></div>
+                <div className="data-head-text">
+                    <div>DTDC</div>
+                    <div><TextRating /> </div>
+                </div>
             </div>
             <hr />
 
