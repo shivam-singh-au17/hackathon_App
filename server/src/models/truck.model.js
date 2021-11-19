@@ -1,7 +1,7 @@
-const mongoose = require("mongoose");
+const mongoose = require( "mongoose" );
 
-const truckModel = new mongoose.model({
-  belongs_to: { type: mongoose.Schema.Types.ObjectId, required: true },
+const truckSchema = new mongoose.Schema( {
+  belongs_to: { type: mongoose.Schema.Types.ObjectId, ref: "company", required: true },
   truck_no: { type: String, required: true },
   from: { type: String, required: true },
   to: { type: String, required: true },
@@ -10,6 +10,6 @@ const truckModel = new mongoose.model({
   filled: { type: Number },
   free: { type: Number },
   packages: { type: Array },
-});
+} );
 
-module.exports = mongoose.model("truck", truckModel);
+module.exports = mongoose.model( "truck", truckSchema );
