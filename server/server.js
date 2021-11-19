@@ -8,11 +8,13 @@ const port = process.env.PORT
 const connect = require( "./src/config/db" );
 
 const appDataController = require( "./src/controllers/appData.controlers" );
+const companyController = require( "./src/controllers/company.controller" );
 
 app.use( cors() );
 app.use( express.json() );
 
-app.use( appDataController );
+app.use( "/appData", appDataController );
+app.use( "/company", companyController );
 
 app.listen( port, async () => {
 
