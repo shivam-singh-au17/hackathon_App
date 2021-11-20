@@ -1,0 +1,144 @@
+.helpPopup {
+  position: fixed;
+  bottom: 5%;
+  right: 2%;
+  padding: 0.4rem 0.8rem;
+  color: white;
+  background-color: green;
+  font-size: 1.3rem;
+  font-weight: 500 !important;
+  letter-spacing: 1px;
+  border-radius: 30px 8px 30px 30px;
+  cursor: pointer;
+}
+
+.helpPopup:hover {
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 8px;
+  transform: scale(1.04);
+  transition: all 0.5s linear 0s;
+  background: rgb(23, 133, 45)
+    radial-gradient(circle, transparent 1%, rgb(23, 133, 45) 1%) repeat scroll
+    center center / 15000%;
+}
+
+.contactUsForm-helpPopup-cont {
+  position: fixed;
+  bottom: 13%;
+  right: 2%;
+  height: 0;
+  width: 0;
+  z-index: 11;
+  background-color: rgb(231, 234, 238);
+  color: black;
+  overflow: auto;
+  transition: none;
+  border-radius: 10px;
+}
+
+.contactUsForm-helpPopup-cont.active {
+  width: 35%;
+  height: 70%;
+  transition: 0.5s;
+  box-shadow: rgb(0 0 0 / 20%) 2px 2px 10px 4px;
+}
+
+#contactUsForm-helpPopup {
+  margin: 10rem 1.6rem 0px;
+  padding: 4rem 1.6rem 0px;
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  transition: padding 0.3s ease-out 0s;
+  background-color: white;
+  border-radius: 8px;
+  font-size: 1.2rem;
+  position: absolute;
+  width: 92%;
+}
+
+#contactUsForm-helpPopup > label > span {
+  color: red;
+  font-size: 1.3rem;
+}
+
+#contactUsForm-helpPopup input {
+  padding: 0.5rem 0.5rem 0.5rem 0.5rem;
+  margin: 0.5rem 0px 0.3rem;
+  border-radius: 4px;
+  display: block;
+  border: 1px solid rgb(207, 215, 223);
+  width: 100%;
+  box-shadow: rgba(18, 52, 77, 0.05) 0px 1px 2px 0px inset;
+  font-size: 1.2rem;
+  font-weight: 600;
+  text-align: start;
+}
+
+#contactUsForm-helpPopup textarea[id="tell_us_more_popup"] {
+  margin-top: 0.5rem;
+  height: 10rem;
+  width: 100%;
+  border-radius: 4px;
+  padding: 1.1rem 0.8rem 1rem 1.2rem;
+  border: 1px solid rgb(207, 215, 223);
+  box-shadow: rgba(18, 52, 77, 0.05) 0px 1px 2px 0px inset;
+}
+
+.contactUsForm-helpPopup-heading-cont {
+  background-color: #000000;
+  color: white;
+  position: absolute;
+  height: 15rem;
+  width: 100%;
+  text-align: center;
+  padding-top: 3rem;
+}
+
+#contactUsForm-helpPopup > button {
+  padding: 0.7rem 0.6rem;
+  box-shadow: rgb(0 0 0 / 30%) 0px 2px 4px 0px;
+  background: green;
+  color: rgb(255, 255, 255);
+  cursor: pointer;
+  font-size: 1.4rem;
+  font-weight: 600;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  transition: all 0.2s ease-in-out 0s;
+  width: 100%;
+  min-width: 14rem;
+  margin: 2rem 0;
+  outline: none;
+  border-radius: 8px;
+}
+
+#contactUsForm-helpPopup > button:hover {
+  transform: scale(104%);
+  background-color: rgb(23, 133, 45);
+}
+
+.helpPopup-collapse-cont {
+  position: relative;
+}
+
+.helpPopup-hide_content {
+  position: absolute;
+  width: 100%;
+  background-color: white;
+  height: 20rem;
+  overflow: auto;
+  height: 0;
+  transition: 0.5s;
+}
+
+.helpPopup-collapse-cont.active .helpPopup-hide_content {
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px,
+    rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+  height: 20rem;
+  transition: 0.5s;
+}
+
+.helpPopup-hide_content ul li {
+  list-style: none;
+  padding: 1rem;
+  cursor: pointer;
+}
