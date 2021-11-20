@@ -52,56 +52,6 @@ router.get("/price", async (req, res) => {
   }
 });
 
-// book an order
-
-router.post("/book", async (req, res) => {
-  try {
-    const order = {
-      from: req.body.from,
-      to: req.body.to,
-      weight: req.body.weight,
-      order_id: uuid(),
-    };
-
-    // Should select a truck which goes from the given city to destination or passes by destination
-    // as well as having free space sufficient enough
-    const available_truck = await Truck.find({
-      $and: [
-        {
-          $or: [
-            { $and: [{ to: req.body.to }, { from: req.body.from }] },
-            { $and: [{ from: req.body.from }, { stops: req.body.to }] },
-          ],
-        },
-        {
-          $and: [{ free: { $gte: req.body, weight } }],
-        },
-      ],
-    });
-
-    if (available_truck) {
-      await Truck.findByIdAndUpdate(
-        available_truck._id,
-        {
-          capacity: available_truck.capacity + req.body.weight,
-          filled: available_truck.capacity + req.body.weight,
-          free: available_truck.capacity - req.body.weight,
-          $push: { packages: order },
-        },
-        { new: true }
-      )
-        .lean()
-        .exec();
-      return res
-        .status(200)
-        .json({ message: "Booked Succesfully", order_id: order.order_id });
-    }
-  } catch (err) {
-    console.log(err);
-    return res.status(500).send(err);
-  }
-});
-
 router.patch("/:id", async (req, res) => {
   try {
     const company = await Company.findByIdAndUpdate(req.params.id, {
