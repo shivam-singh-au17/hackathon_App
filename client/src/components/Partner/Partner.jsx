@@ -110,8 +110,8 @@ export default function BasicPopover() {
                             "Content-Type": "application/json",
                         }
                     })
-                    .then((res)=>alert("working"))
-                    .catch((err)=>alert(err.message))
+                    .then((res)=>console.log("working"))
+                    .catch((err)=>console.log("error", err.message))
                     console.log("formData", formData)
                 }}
                 >Submit</button>
