@@ -31,17 +31,17 @@ router.get( "/price", async ( req, res ) => {
     const company = await Company.findById( req.body.company_id ).lean().exec();
     let price;
     if ( Number( req.body.distance >= 1000 ) ) {
-      // a price
+      price = company.pricing.gte1000;
     } else if ( Number( req.body.distance >= 500 ) ) {
-      // a price
+      price = company.pricing.gte500;
     } else {
-      // a price
+      price = company.pricing.lt500;
     }
 
     if ( Number( req.body.weight >= 1000 ) ) {
-      // a price
+      price *= 2;
     } else if ( Number( req.body.weight >= 500 ) ) {
-      // a price
+      price += ~~( price / 2 )
     } else {
       // a price
     }
