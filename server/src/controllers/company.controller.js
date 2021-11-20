@@ -101,4 +101,16 @@ router.post("/book", async (req, res) => {
     return res.status(500).send(err);
   }
 });
+
+router.patch("/:id", async (req, res) => {
+  try {
+    const company = await Company.findByIdAndUpdate(req.params.id, {
+      pricing: req.body,
+    });
+  } catch (err) {
+    console.log(err);
+    return res.status(500).send(err);
+  }
+});
+
 module.exports = router;
