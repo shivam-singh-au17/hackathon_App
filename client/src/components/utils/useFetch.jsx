@@ -14,7 +14,7 @@ export const useFetch = (url) => {
       .get(url)
       .then((res) => {
         setData(res.data[0].PostOffice);
-        console.log(res.data[0].PostOffice);
+        // console.log(res.data[0].PostOffice);
         setLoading(false);
       })
       .catch((err) => {
