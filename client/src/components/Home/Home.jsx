@@ -1,7 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
+import { useFetch } from "../utils/useFetch";
 import "./Home.css";
 
 const Home = () => {
+  const [queryTo, setQueryTo] = useState("");
+  const [to, setTo] = useState("");
+  console.log("to:", to);
+  const [queryFrom, setQueryFrom] = useState("");
+  const [from, setFrom] = useState("");
+  console.log("city:", from);
+  const { loading, error, data } = useFetch(
+    `https://api.postalpincode.in/postoffice/${
+      queryTo.trim() || queryFrom.trim()
+    }`
+  );
   return (
     <>
       <div className="mb-5">
@@ -25,7 +37,40 @@ const Home = () => {
                       className="form-control"
                       aria-label="Text input with dropdown button"
                       placeholder="City Name"
+                      value={from}
+                      onChange={(e) => {
+                        setQueryFrom(e.target.value);
+                        setFrom(e.target.value);
+                      }}
                     />
+                    {!queryFrom.trim() ? (
+                      <></>
+                    ) : loading ? (
+                      <div className="suggestions">
+                        <h4>Loading...</h4>
+                      </div>
+                    ) : error ? (
+                      <div className="suggestions">
+                        <h4>No match !</h4>
+                      </div>
+                    ) : (
+                      <div className="suggestions">
+                        {data
+                          ? data.map((el) => (
+                              <li
+                                button
+                                onClick={() => {
+                                  setFrom(`${el.Region}-${el.Pincode}`);
+                                  setQueryFrom("");
+                                }}
+                                key={el.Pincode}
+                              >
+                                {el.Region} - {el.Pincode}
+                              </li>
+                            ))
+                          : ""}
+                      </div>
+                    )}
                   </div>
                   <div>
                     <label htmlFor="" className="form-label">
@@ -37,7 +82,41 @@ const Home = () => {
                         className="form-control"
                         aria-label="Text input with dropdown button"
                         placeholder="City Name"
-                      />
+                        value={to}
+                        onChange={(e) => {
+                          setQueryTo(e.target.value);
+                          setTo(e.target.value);
+                        }}
+                      />{" "}
+                      <br />
+                      {!queryTo.trim() ? (
+                        <></>
+                      ) : loading ? (
+                        <div className="suggestions">
+                          <h4>Loading...</h4>
+                        </div>
+                      ) : error ? (
+                        <div className="suggestions">
+                          <h4>No match !</h4>
+                        </div>
+                      ) : (
+                        <div className="suggestions">
+                          {data
+                            ? data.map((el) => (
+                                <li
+                                  button
+                                  onClick={() => {
+                                    setTo(`${el.Region}-${el.Pincode}`);
+                                    setQueryTo("");
+                                  }}
+                                  key={el.Pincode}
+                                >
+                                  {el.Region} - {el.Pincode}
+                                </li>
+                              ))
+                            : ""}
+                        </div>
+                      )}
                     </div>
                   </div>
                 </div>
