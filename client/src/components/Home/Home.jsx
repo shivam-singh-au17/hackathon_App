@@ -71,7 +71,7 @@ const Home = () => {
           {
             from: resFrom,
             to: resTo,
-            weight: Number(myData.weight),
+            weight: +myData.weight * +myData.qty,
             distance: 150,
             // company_id: "6198997b6d0a0337acdfec88",
           }
