@@ -4,6 +4,16 @@ const Truck = require( "../models/truck.model" );
 const uuid = require( "uuid" );
 // add a new company
 
+router.get( "/", async ( req, res ) => {
+  try {
+    const companies = await Company.find().lean().exec();
+    res.status( 200 ).json( companies );
+  } catch ( err ) {
+    console.log( err );
+    res.status( 500 ).send( err );
+  }
+} );
+
 router.post( "/", async ( req, res ) => {
   try {
     const company = await Company.create( req.body );
