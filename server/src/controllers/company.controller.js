@@ -1,7 +1,7 @@
 const router = require("express").Router();
 const Company = require("../models/company.model");
 const Truck = require("../models/truck.model");
-const uuid = require("uuid");
+const { v4: uuid } = require("uuid");
 const KEY = process.env.GOOGLE_KEY;
 
 // add a new company
