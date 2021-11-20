@@ -60,32 +60,45 @@ const Home = () => {
         }
       )
       .then((res) => {
+
         distance = ~~(res.data?.rows[0]?.elements[0]?.distance.value / 1000);
         duration = res.data?.rows[0]?.elements[0]?.duration.text;
         setDuration(duration);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-
-    axios
+         axios
       .post(
         "http://localhost:5000/company/price",
 
-        {
-          from: resFrom,
-          to: resTo,
-          weight: Number(myData.weight),
-          distance: 150,
-          // company_id: "6198997b6d0a0337acdfec88",
-        }
-      )
-      .then((res) => {
-        console.log(duration);
-        setAddTask([...res.data]);
-      });
+          {
+            from: resFrom,
+            to: resTo,
+            weight: Number(myData.weight),
+            distance: 150,
+            // company_id: "6198997b6d0a0337acdfec88",
+          }
+        )
+        .then((res) => {
+          console.log(duration);
+          setAddTask([...res.data]);
+        });
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+
+   
   };
 
+ 
+  // const {
+  //   cityFrom,
+  //   cityTo,
+  //   date,
+  //   qty,
+  //   weight,
+  //   dimensionsL,
+  //   dimensionsW,
+  //   dimensionsH,
+  // } = myData;
   const { date, qty, weight, dimensionsL, dimensionsW, dimensionsH } = myData;
 
   return (

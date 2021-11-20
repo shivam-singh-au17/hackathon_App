@@ -1,8 +1,13 @@
 import React from "react";
 import logo from "../Images/logo.png";
+import BasicPopover from "../Partner/Partner";
 import "./Navbar.css"
 
 const Navbar = () => {
+
+
+  
+
   return (
     <div>
       <nav
@@ -30,6 +35,11 @@ const Navbar = () => {
                 <a className="nav-link active" aria-current="page" href="/">
                   Home
                 </a>
+              </li>
+              <li className="nav-item">
+                
+                  <BasicPopover />
+                
               </li>
               <li className="nav-item dropdown">
                 <a

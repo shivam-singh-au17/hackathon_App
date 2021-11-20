@@ -1,4 +1,7 @@
-import React from "react";
+
+import React, { useEffect, useState } from "react";
+import TextRating from '../TextRating/TextRating';
+import axios from "axios";
 import ProgressBar from "../Progress/ProgressBar";
 import "./Delivery.css";
 
@@ -39,12 +42,16 @@ export const Delivery = ({ addTask, duration }) => {
   //   });
   // }, []);
   console.log(duration, addTask);
+
+ 
+
   return (
     <>
       {addTask?.map((item) => {
         return (
           <div className="data-cont" key={item.id}>
             <div className="data-head">
+
               <div>
                 <img src={item.company_logo} alt="" />
               </div>
@@ -62,13 +69,13 @@ export const Delivery = ({ addTask, duration }) => {
                 />
               </div>
               <div>
-                <ProgressBar bgcolor={bg} completed={completed} />
+                <TextRating />
               </div>
             </div>
 
             <div className="time-price">
               <div className="time">Time : {duration}</div>
-              <div className="price">Price : {item.price}</div>
+              <div className="price">Price : Rs {item.price}</div>
             </div>
             <div className="data-button">
               <button style={{ backgroundColor: "green" }}>
