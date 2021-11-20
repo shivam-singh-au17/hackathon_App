@@ -1,11 +1,16 @@
 import './App.css';
+import Accordion from './components/Accordion/Accordion';
+import HelpPop from './components/HelpPop/HelpPop';
+import Home from './components/Home/Home';
+import Navbar from './components/Navbar/Navbar';
 
 function App() {
   return (
     <div className="App">
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
+      <Navbar />
+      <Home />
+      <Accordion />
+      <HelpPop />
     </div>
   );
 }
