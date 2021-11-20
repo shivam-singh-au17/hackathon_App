@@ -1,29 +1,47 @@
-import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import ProgressBar from "../Progress/ProgressBar";
 import "./Delivery.css";
 
-export const Delivery = () => {
-  const [addTask, setAddTask] = useState([]);
+export const Delivery = ({ addTask, duration }) => {
+  // const [addTask, setAddTask] = useState([]);
   const bg = "#ef6c00";
   const completed = 60;
+  // const [priceData, setPriceData] = useState([]);
 
-  function getMyAllCompony() {
-    axios
-      .get(`https://mysterious-depths-33415.herokuapp.com/company`)
-      .then((res) => {
-        setAddTask(res.data);
-        console.log("res:", res.data);
-      });
-  }
+  // function getMyAllCompony() {
+  //   axios
+  //     .get(`https://mysterious-depths-33415.herokuapp.com/company`)
+  //     .then((res) => {
+  //       setAddTask(res.data);
+  //     });
+  // }
 
-  useEffect(() => {
-    getMyAllCompony();
-  }, []);
+  // function getPriceData(id) {
+  //   console.log("called with ", id);
+  //   axios
+  //     .post("https://mysterious-depths-33415.herokuapp.com/company/price", {
+  //       from,
+  //       to,
+  //       weight,
+  //       distance,
+  //       company_id: id,
+  //     })
+  //     .then((res) => {
+  //       console.log(res);
+  //     });
+  // }
 
+  // useEffect(() => {
+  //   getMyAllCompony();
+  //   addTask?.forEach((el) => {
+  //     console.log(el);
+  //     getPriceData(el?._id);
+  //   });
+  // }, []);
+  console.log(duration, addTask);
   return (
     <>
-      {addTask.map((item) => {
+      {addTask?.map((item) => {
         return (
           <div className="data-cont" key={item.id}>
             <div className="data-head">
@@ -49,8 +67,8 @@ export const Delivery = () => {
             </div>
 
             <div className="time-price">
-              <div className="time">Time : 10 days</div>
-              <div className="price">Price : 2300 /-</div>
+              <div className="time">Time : {duration}</div>
+              <div className="price">Price : {item.price}</div>
             </div>
             <div className="data-button">
               <button style={{ backgroundColor: "green" }}>

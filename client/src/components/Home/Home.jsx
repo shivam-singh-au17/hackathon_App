@@ -2,10 +2,8 @@ import React, { useState } from "react";
 import { Delivery } from "../Delivery/Delivery";
 import { useFetch } from "../utils/useFetch";
 import "./Home.css";
-
+import axios from "axios";
 const iniState = {
-  cityFrom: "",
-  cityTo: "",
   date: "",
   qty: "",
   weight: "",
@@ -15,11 +13,14 @@ const iniState = {
 };
 
 const Home = () => {
+  const [addTask, setAddTask] = useState([]);
+  const [duration, setDuration] = useState("");
   const [myData, setMyData] = useState(iniState);
   const [queryTo, setQueryTo] = useState("");
   const [to, setTo] = useState("");
   const [queryFrom, setQueryFrom] = useState("");
   const [from, setFrom] = useState("");
+  const [backendData, setData] = useState({});
   const { loading, error, data } = useFetch(
     `https://api.postalpincode.in/postoffice/${
       queryTo.trim() || queryFrom.trim()
@@ -45,27 +46,47 @@ const Home = () => {
     setTo(e.target.value);
   };
 
-  const handleClick = () => {
-    fetch("http://localhost:5000/appData", {
-      method: "POST",
-      body: JSON.stringify(myData),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-    setMyData(iniState);
+  const handleClick = async () => {
+    let resTo = to.slice(to.length - 6);
+    let resFrom = from.slice(from.length - 6);
+    let distance;
+    let duration;
+    setData({ ...data, to: resTo, from: resFrom, distance, duration });
+    axios
+      .get(
+        `https://maps.googleapis.com/maps/api/distancematrix/json?origins=${resFrom}&destinations=${resTo}&key=AIzaSyDbBkX5dOz_e9p2kPZVKR3VHtSz3p0cilw`,
+        {
+          headers: {},
+        }
+      )
+      .then((res) => {
+        distance = ~~(res.data?.rows[0]?.elements[0]?.distance.value / 1000);
+        duration = res.data?.rows[0]?.elements[0]?.duration.text;
+        setDuration(duration);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+
+    axios
+      .post(
+        "http://localhost:5000/company/price",
+
+        {
+          from: resFrom,
+          to: resTo,
+          weight: Number(myData.weight),
+          distance: 150,
+          // company_id: "6198997b6d0a0337acdfec88",
+        }
+      )
+      .then((res) => {
+        console.log(duration);
+        setAddTask([...res.data]);
+      });
   };
 
-  const {
-    cityFrom,
-    cityTo,
-    date,
-    qty,
-    weight,
-    dimensionsL,
-    dimensionsW,
-    dimensionsH,
-  } = myData;
+  const { date, qty, weight, dimensionsL, dimensionsW, dimensionsH } = myData;
 
   return (
     <>
@@ -307,10 +328,7 @@ const Home = () => {
                           ></button>
                         </div>
                         <div className="modal-body myGrid myBackground">
-                          <Delivery />
-                          <Delivery />
-                          <Delivery />
-                          <Delivery />
+                          <Delivery addTask={addTask} duration={duration} />
                         </div>
                         {/* <div className="modal-footer">
                           <button

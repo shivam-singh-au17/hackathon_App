@@ -28,24 +28,102 @@ router.post("/", async (req, res) => {
 
 // price Calculater
 
-router.get("/price", async (req, res) => {
+router.post("/price", async (req, res) => {
   try {
-    const company = await Company.findById(req.body.company_id).lean().exec();
-    let price;
-    if (Number(req.body.distance >= 1000)) {
-      price = company.pricing.gte1000 * req.body.distance;
-    } else if (Number(req.body.distance >= 500)) {
-      price = company.pricing.gte500 * req.body.distance;
-    } else {
-      price = company.pricing.lt500 * req.body.distance;
-    }
+    console.log(req.body);
+    let priceArray = [];
+    const companies = await Company.find().lean().exec();
 
-    if (Number(req.body.weight >= 1000)) {
-      price *= 2;
-    } else if (Number(req.body.weight >= 500)) {
-      price += ~~(price / 2);
-    }
-    return res.status(200).json({ price });
+    let trucksArray = [];
+
+    trucksArray = await Promise.all(
+      companies.map((company) => {
+        return Truck.find({
+          $and: [
+            {
+              $or: [
+                { $and: [{ to: req.body.to }, { from: req.body.from }] },
+                { $and: [{ from: req.body.from }, { stops: req.body.to }] },
+              ],
+            },
+            {
+              free: { $gte: req.body.weight },
+            },
+            {
+              belongs_to: company._id,
+            },
+          ],
+        }).sort({ capacity: -1 });
+      })
+    );
+
+    // companies.forEach(async (company) => {
+    //   const available_truck = await Truck.find({
+    //     $and: [
+    //       {
+    //         $or: [
+    //           { $and: [{ to: req.body.to }, { from: req.body.from }] },
+    //           { $and: [{ from: req.body.from }, { stops: req.body.to }] },
+    //         ],
+    //       },
+    //       {
+    //         free: { $gte: req.body.weight },
+    //       },
+    //       {
+    //         belongs_to: company._id,
+    //       },
+    //     ],
+    //   }).sort({ capacity: -1 });
+
+    //   console.log(company.available_truck);
+
+    //   trucksArray.push(available_truck);
+    // });
+
+    console.log(trucksArray);
+
+    // companies.forEach((company) => {
+    //   let price;
+    //   if (Number(req.body.distance >= 1000)) {
+    //     price = company.pricing.gte1000 * req.body.distance;
+    //   } else if (Number(req.body.distance >= 500)) {
+    //     price = company.pricing.gte500 * req.body.distance;
+    //   } else {
+    //     price = company.pricing.lt500 * req.body.distance;
+    //   }
+
+    //   if (Number(req.body.weight >= 1000)) {
+    //     price *= 2;
+    //   } else if (Number(req.body.weight >= 500)) {
+    //     price += ~~(price / 2);
+    //   }
+
+    //   company.price = price;
+    //   priceArray.push(company);
+    // });
+
+    return res.status(200).json(priceArray);
+    // const company = await Company.findById(req.body.company_id).lean().exec();
+
+    //   if (!company)
+    //     return res
+    //       .status(404)
+    //       .json({ message: "Company is not operating in this route" });
+    //   let price;
+    //   if (Number(req.body.distance >= 1000)) {
+    //     price = company.pricing.gte1000 * req.body.distance;
+    //   } else if (Number(req.body.distance >= 500)) {
+    //     price = company.pricing.gte500 * req.body.distance;
+    //   } else {
+    //     price = company.pricing.lt500 * req.body.distance;
+    //   }
+
+    //   if (Number(req.body.weight >= 1000)) {
+    //     price *= 2;
+    //   } else if (Number(req.body.weight >= 500)) {
+    //     price += ~~(price / 2);
+    //   }
+    //   return res.status(200).json({ price });
   } catch (err) {
     console.log(err);
     return res.status(500).send(err);
