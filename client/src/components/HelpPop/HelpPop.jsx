@@ -2,6 +2,33 @@ import React from "react";
 import "./HelpPop.css";
 
 const HelpPop = () => {
+
+ const recordSearch = () => {
+   const SpeechRecognition =
+     window.SpeechRecognition || window.webkitSpeechRecognition;
+   const recognition = new SpeechRecognition();
+   recognition.lang = "en-GB";
+
+   recognition.onresult = function (event) {
+     document.getElementById("name_popup").value =
+       event.results[0][0].transcript;
+   };
+   recognition.start();
+ };
+
+ const recordSearchTwo = () => {
+   const SpeechRecognition =
+     window.SpeechRecognition || window.webkitSpeechRecognition;
+   const recognition = new SpeechRecognition();
+   recognition.lang = "en-GB";
+
+   recognition.onresult = function (event) {
+     document.getElementById("tell_us_more_popup").value =
+       event.results[0][0].transcript;
+   };
+   recognition.start();
+ };
+
   const submitHelpPopup = (e) => {
     e.preventDefault();
     const form = document.getElementById("contactUsForm-helpPopup");
@@ -43,7 +70,12 @@ const HelpPop = () => {
         </div>
         <form id="contactUsForm-helpPopup">
           <label htmlFor="name-popup">Your name</label>
-          <input type="text" name="name" id="name_popup" />
+          <input
+            type="text"
+            name="name"
+            id="name_popup"
+            onClick={recordSearch}
+          />
 
           <label htmlFor="email-popup">
             Email <span>*</span>
@@ -54,6 +86,7 @@ const HelpPop = () => {
             Tell us more! <span>*</span>
           </label>
           <textarea
+            onClick={recordSearchTwo}
             name="tell-us-more"
             id="tell_us_more_popup"
             cols="30"
