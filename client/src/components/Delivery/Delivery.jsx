@@ -1,14 +1,15 @@
-
-import React, { useEffect, useState } from "react";
-import TextRating from '../TextRating/TextRating';
-import axios from "axios";
-import ProgressBar from "../Progress/ProgressBar";
+import React from "react";
+import TextRating from "../TextRating/TextRating";
 import "./Delivery.css";
+import { Button} from "react-bootstrap";
 
 export const Delivery = ({ addTask, duration }) => {
+  
+  const toggleShowA = () => {
+    alert("Confirm")
+  };
   // const [addTask, setAddTask] = useState([]);
-  const bg = "#ef6c00";
-  const completed = 60;
+
   // const [priceData, setPriceData] = useState([]);
 
   // function getMyAllCompony() {
@@ -43,15 +44,12 @@ export const Delivery = ({ addTask, duration }) => {
   // }, []);
   console.log(duration, addTask);
 
- 
-
   return (
     <>
       {addTask?.map((item) => {
         return (
           <div className="data-cont" key={item.id}>
             <div className="data-head">
-
               <div>
                 <img src={item.company_logo} alt="" />
               </div>
@@ -78,9 +76,15 @@ export const Delivery = ({ addTask, duration }) => {
               <div className="price">Price : Rs {item.price}</div>
             </div>
             <div className="data-button">
-              <button style={{ backgroundColor: "green" }}>
+              {/* <button>Click To Confirm</button> */}
+              <Button
+                id="liveToastBtn"
+                onClick={toggleShowA}
+                style={{ backgroundColor: "green" }}
+                className="mb-2"
+              >
                 Click To Confirm
-              </button>
+              </Button>
             </div>
           </div>
         );
