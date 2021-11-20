@@ -2,7 +2,7 @@ const express = require( "express" );
 const AppData = require( "../models/appData.model" );
 const router = express.Router();
 
-router.post( "/", async ( req, res ) => {
+router.post( "/appData", async ( req, res ) => {
     try {
         let appData = new AppData( req.body );
         appData = await appData.save();
@@ -18,7 +18,7 @@ router.post( "/", async ( req, res ) => {
     }
 } );
 
-router.get( "/", async ( req, res ) => {
+router.get( "/appData", async ( req, res ) => {
     try {
         let users = await AppData.find();
         res.status( 200 ).json( {
