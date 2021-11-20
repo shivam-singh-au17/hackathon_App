@@ -29,6 +29,19 @@ const HelpPop = () => {
    recognition.start();
  };
 
+ const recordSearchThree = () => {
+   const SpeechRecognition =
+     window.SpeechRecognition || window.webkitSpeechRecognition;
+   const recognition = new SpeechRecognition();
+   recognition.lang = "en-GB";
+
+   recognition.onresult = function (event) {
+     document.getElementById("email_popup").value =
+       event.results[0][0].transcript;
+   };
+   recognition.start();
+ };
+
   const submitHelpPopup = (e) => {
     e.preventDefault();
     const form = document.getElementById("contactUsForm-helpPopup");
@@ -80,7 +93,12 @@ const HelpPop = () => {
           <label htmlFor="email-popup">
             Email <span>*</span>
           </label>
-          <input type="text" name="email" id="email_popup" />
+          <input
+            type="text"
+            name="email"
+            id="email_popup"
+            onClick={recordSearchThree}
+          />
 
           <label htmlFor="tell-us-more">
             Tell us more! <span>*</span>
