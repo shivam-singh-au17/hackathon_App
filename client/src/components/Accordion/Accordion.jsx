@@ -1,8 +1,13 @@
 import React from "react";
+import AllCompony from "../AllCompony/AllCompony";
 
 const Accordion = () => {
   return (
     <>
+      <div className="myGrid container">
+        <AllCompony/>
+        <AllCompony/>
+      </div>
       <div className="accordion container mb-5" id="accordionExample">
         <div className="accordion-item">
           <h2 className="accordion-header" id="headingOne">
@@ -98,7 +103,6 @@ const Accordion = () => {
           </div>
         </div>
       </div>
-
     </>
   );
 };
