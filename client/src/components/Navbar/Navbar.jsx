@@ -1,13 +1,9 @@
 import React from "react";
 import logo from "../Images/logo.png";
 import BasicPopover from "../Partner/Partner";
-import "./Navbar.css"
+import "./Navbar.css";
 
 const Navbar = () => {
-
-
-  
-
   return (
     <div>
       <nav
@@ -37,9 +33,55 @@ const Navbar = () => {
                 </a>
               </li>
               <li className="nav-item">
-                
-                  <BasicPopover />
-                
+                <span
+                  type="button"
+                  data-bs-toggle="modal"
+                  data-bs-target="#exampleModal"
+                >
+                  <a className="nav-link active" aria-current="page" href="/">
+                    Add Company
+                  </a>
+                </span>
+
+                <div
+                  class="modal fade"
+                  id="exampleModal"
+                  tabindex="-1"
+                  aria-labelledby="exampleModalLabel"
+                  aria-hidden="true"
+                >
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">
+                          Modal title
+                        </h5>
+                        <button
+                          type="button"
+                          class="btn-close"
+                          data-bs-dismiss="modal"
+                          aria-label="Close"
+                        ></button>
+                      </div>
+                      <div class="modal-body">...</div>
+                      <div class="modal-footer">
+                        <button
+                          type="button"
+                          class="btn btn-secondary"
+                          data-bs-dismiss="modal"
+                        >
+                          Close
+                        </button>
+                        <button type="button" class="btn btn-primary">
+                          Save changes
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </li>
+              <li className="nav-item">
+                <BasicPopover />
               </li>
               <li className="nav-item dropdown">
                 <a
@@ -50,7 +92,7 @@ const Navbar = () => {
                   data-bs-toggle="dropdown"
                   aria-expanded="false"
                 >
-                  Companies
+                  Company
                 </a>
                 <ul
                   className="dropdown-menu fs-5"
