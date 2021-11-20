@@ -1,7 +1,7 @@
 const router = require("express").Router();
 const Company = require("../models/company.model");
 const Truck = require("../models/truck.model");
-const uuid = require("uuid");
+const { v4: uuid } = require("uuid");
 const KEY = process.env.GOOGLE_KEY;
 
 // add a new company
@@ -101,4 +101,16 @@ router.post("/book", async (req, res) => {
     return res.status(500).send(err);
   }
 });
+
+router.patch("/:id", async (req, res) => {
+  try {
+    const company = await Company.findByIdAndUpdate(req.params.id, {
+      pricing: req.body,
+    });
+  } catch (err) {
+    console.log(err);
+    return res.status(500).send(err);
+  }
+});
+
 module.exports = router;
