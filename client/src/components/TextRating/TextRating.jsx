@@ -16,7 +16,8 @@ const labels = {
 };
 
 export default function TextRating() {
-  const value = 3.5;
+  
+  let value = Math.random() * (5 - 3) + 3;
 
   return (
     <Box
