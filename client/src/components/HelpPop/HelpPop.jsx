@@ -49,25 +49,26 @@ const HelpPop = () => {
     recognition.start();
   };
 
-    const handleChang = (e) => {
-      const { name, value, type, checked } = e.target;
-      const myAllUserData = {
-        ...helpData,
-        [name]: type === "checkbox" ? checked : value,
-      };
-      setHelpData(myAllUserData);
+  const handleChang = (e) => {
+    const { name, value, type, checked } = e.target;
+    const myAllUserData = {
+      ...helpData,
+      [name]: type === "checkbox" ? checked : value,
     };
+    setHelpData(myAllUserData);
+  };
 
   const submitHelpPopup = (e) => {
     e.preventDefault();
-     fetch("http://localhost:5000/appData", {
-       method: "POST",
-       body: JSON.stringify(helpData),
-       headers: {
-         "Content-Type": "application/json",
-       },
-     });
-     setHelpData(iniState);
+    fetch("https://hackathonserverside.herokuapp.com/appData", {
+      method: "POST",
+      body: JSON.stringify(helpData),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    setHelpData(iniState);
+    alert("Submited");
   };
 
   const showContactPopup = () => {
@@ -77,7 +78,7 @@ const HelpPop = () => {
     contactPopup.classList.toggle("active");
   };
 
-   const { name, email, tell_us_more } = helpData;
+  const { name, email, tell_us_more } = helpData;
 
   return (
     <div>
@@ -137,4 +138,3 @@ const HelpPop = () => {
 };
 
 export default HelpPop;
-
