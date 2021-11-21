@@ -103,7 +103,7 @@ const HelpPop = () => {
             Email <span>*</span>
           </label>
           <input
-            type="text"
+            type="email"
             name="email"
             value={email}
             id="email_popup"
