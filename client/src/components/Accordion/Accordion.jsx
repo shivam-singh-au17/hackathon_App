@@ -1,13 +1,8 @@
 import React from "react";
-import AllCompony from "../AllCompony/AllCompony";
 
 const Accordion = () => {
   return (
     <>
-      <div className="myGrid container">
-        <AllCompony/>
-        <AllCompony/>
-      </div>
       <div className="accordion container mb-5" id="accordionExample">
         <div className="accordion-item">
           <h2 className="accordion-header" id="headingOne">
@@ -29,14 +24,14 @@ const Accordion = () => {
             data-bs-parent="#accordionExample"
           >
             <div className="accordion-body">
-              <strong>This is the first item's accordion body.</strong> It is
-              shown by default, until the collapse plugin adds the appropriate
-              classes that we use to style each element. These classes control
-              the overall appearance, as well as the showing and hiding via CSS
-              transitions. You can modify any of this with custom CSS or
-              overriding our default variables. It's also worth noting that just
-              about any HTML can go within the <code>.accordion-body</code>,
-              though the transition does limit overflow.
+              Blue Dart is a global carrier that has been engaged as a top
+              courier service company since 1983 and is among the best courier
+              services for online business. Blue Dart has a reach of 35,000+ pin
+              codes in India and 220+ countries globally. They offer multiple
+              payment packages that bundle services together. These services
+              include COD delivery, automated proof-of-delivery on fulfillment,
+              weather-resistant packaging for orders, express delivery and
+              time-base/slot-based delivery.
             </div>
           </div>
         </div>

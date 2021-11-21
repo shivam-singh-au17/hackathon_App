@@ -1,13 +1,9 @@
 import React from "react";
 import logo from "../Images/logo.png";
-import BasicPopover from "../Partner/Partner";
-import "./Navbar.css"
+import AddPartner from "../Partner/AddPartner";
+import "./Navbar.css";
 
 const Navbar = () => {
-
-
-  
-
   return (
     <div>
       <nav
@@ -37,9 +33,15 @@ const Navbar = () => {
                 </a>
               </li>
               <li className="nav-item">
-                
-                  <BasicPopover />
-                
+                <span
+                  className="nav-link active"
+                  type="button"
+                  data-bs-toggle="modal"
+                  data-bs-target="#staticBackdrop"
+                >
+                  BecomePartners
+                </span>
+                <AddPartner />
               </li>
               <li className="nav-item dropdown">
                 <a
@@ -50,11 +52,11 @@ const Navbar = () => {
                   data-bs-toggle="dropdown"
                   aria-expanded="false"
                 >
-                  Companies
+                  OurPartners
                 </a>
                 <ul
                   className="dropdown-menu fs-5"
-                  style={{ backgroundColor: "#FF00B3" }}
+                  style={{ backgroundColor: "#FFFFFF" }}
                   aria-labelledby="navbarDropdown"
                 >
                   <li>
@@ -75,14 +77,6 @@ const Navbar = () => {
                   <li>
                     <a className="dropdown-item" href="/">
                       DTDC
-                    </a>
-                  </li>
-                  <li>
-                    <hr className="dropdown-divider" />
-                  </li>
-                  <li>
-                    <a className="dropdown-item" href="/">
-                      Something else here
                     </a>
                   </li>
                 </ul>

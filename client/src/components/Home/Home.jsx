@@ -54,7 +54,7 @@ const Home = () => {
     setData({ ...data, to: resTo, from: resFrom, distance, duration });
     axios
       .get(
-        `https://maps.googleapis.com/maps/api/distancematrix/json?origins=${resFrom}&destinations=${resTo}&key=AIzaSyDbBkX5dOz_e9p2kPZVKR3VHtSz3p0cilw`,
+        `https://maps.googleapis.com/maps/api/distancematrix/json?origins=${resFrom}||751022&destinations=${resTo}||400061&key=AIzaSyDbBkX5dOz_e9p2kPZVKR3VHtSz3p0cilw`,
         {
           headers: {},
         }
@@ -65,21 +65,36 @@ const Home = () => {
         duration = res.data?.rows[0]?.elements[0]?.duration.text;
         setDuration(duration);
          axios
-      .post(
-        "http://localhost:5000/company/price",
+           .post(
+             "http://localhost:5000/company/price",
 
-          {
-            from: resFrom,
-            to: resTo,
-            weight: Number(myData.weight),
-            distance: 150,
-            // company_id: "6198997b6d0a0337acdfec88",
-          }
-        )
-        .then((res) => {
-          console.log(duration);
-          setAddTask([...res.data]);
-        });
+// <<<<<<< HEAD
+//           {
+//             from: resFrom,
+//             to: resTo,
+//             weight: +myData.weight * +myData.qty,
+//             distance: 150,
+//             // company_id: "6198997b6d0a0337acdfec88",
+//           }
+//         )
+//         .then((res) => {
+//           console.log(duration);
+//           setAddTask([...res.data]);
+//         });
+// =======
+             {
+               from: resFrom,
+               to: resTo,
+               weight: +myData.weight * +myData.qty,
+               distance: distance,
+               // company_id: "6198997b6d0a0337acdfec88",
+             }
+           )
+           .then((res) => {
+             console.log(duration);
+             setAddTask([...res.data]);
+           });
+// >>>>>>> 960ee0a24623ac7982c438d8f77662976043dc7b
         })
         .catch((err) => {
           console.log(err);
@@ -100,6 +115,16 @@ const Home = () => {
   //   dimensionsH,
   // } = myData;
   const { date, qty, weight, dimensionsL, dimensionsW, dimensionsH } = myData;
+
+  const ltoh = () => {
+      addTask.sort((a,b) => a.price - b.price);
+      setAddTask([...addTask])
+  }
+
+    const htol = () => {
+      addTask.sort((a,b) => b.price - a.price);
+      setAddTask([...addTask])
+  }
 
   return (
     <>
@@ -316,7 +341,7 @@ const Home = () => {
                   <div
                     className="modal fade"
                     id="exampleModal"
-                    tabindex="-1"
+                    tabIndex="-1"
                     aria-labelledby="exampleModalLabel"
                     aria-hidden="true"
                   >
@@ -340,21 +365,10 @@ const Home = () => {
                             aria-label="Close"
                           ></button>
                         </div>
-                        <div className="modal-body myGrid myBackground">
-                          <Delivery addTask={addTask} duration={duration} />
+                        
+                        <div className="modal-body myBackground">
+                          <Delivery addTask={addTask} duration={duration} ltoh={ltoh} htol={htol}/>
                         </div>
-                        {/* <div className="modal-footer">
-                          <button
-                            type="button"
-                            className="btn btn-secondary"
-                            data-bs-dismiss="modal"
-                          >
-                            Close
-                          </button>
-                          <button type="button" className="btn btn-primary">
-                            Save changes
-                          </button>
-                        </div> */}
                       </div>
                     </div>
                   </div>
