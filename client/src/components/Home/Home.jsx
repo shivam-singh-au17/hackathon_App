@@ -21,11 +21,16 @@ const Home = () => {
   const [queryFrom, setQueryFrom] = useState("");
   const [from, setFrom] = useState("");
   const [backendData, setData] = useState({});
+  console.log(backendData);
   const { loading, error, data } = useFetch(
     `https://api.postalpincode.in/postoffice/${
       queryTo.trim() || queryFrom.trim()
     }`
   );
+
+  // const { loading, error, data } = useFetch(
+  //   `http://localhost:3001/allPinCode?q=${queryTo.trim() || queryFrom.trim()}`
+  // );
 
   const handleChang = (e) => {
     const { name, value, type, checked } = e.target;
@@ -60,7 +65,7 @@ const Home = () => {
         }
       )
       .then((res) => {
-        distance = ~~(res.data?.rows[0]?.elements[0]?.distance.value / 1000);
+        distance = ~~(res.data?.rows[0]?.elements[0]?.distance.value / 10000);
         duration = res.data?.rows[0]?.elements[0]?.duration.text;
         setDuration(duration);
         axios
@@ -76,7 +81,6 @@ const Home = () => {
             }
           )
           .then((res) => {
-            console.log(duration);
             setAddTask([...res.data]);
           });
       })
@@ -96,6 +100,16 @@ const Home = () => {
   //   dimensionsH,
   // } = myData;
   const { date, qty, weight, dimensionsL, dimensionsW, dimensionsH } = myData;
+
+  const ltoh = () => {
+    addTask.sort((a, b) => a.price - b.price);
+    setAddTask([...addTask]);
+  };
+
+  const htol = () => {
+    addTask.sort((a, b) => b.price - a.price);
+    setAddTask([...addTask]);
+  };
 
   return (
     <>
@@ -141,7 +155,7 @@ const Home = () => {
                         </div>
                       ) : (
                         <div className="suggestions">
-                          <table className="table table-hover">
+                          <table className="table table-hover fs-5">
                             <tbody>
                               {data
                                 ? data.map((el) => (
@@ -151,10 +165,11 @@ const Home = () => {
                                         setFrom(`${el.Region}-${el.Pincode}`);
                                         setQueryFrom("");
                                       }}
-                                      key={el.Pincode}
+                                      key={el.id}
                                     >
-                                      <td className="px-5">{el.Region}</td>
-                                      <td className="px-5">{el.Pincode}</td>
+                                      <td>
+                                        {el.Region}, {el.Country}, {el.Pincode}
+                                      </td>
                                     </tr>
                                   ))
                                 : ""}
@@ -198,7 +213,7 @@ const Home = () => {
                           </div>
                         ) : (
                           <div className="suggestions">
-                            <table className="table table-hover">
+                            <table className="table table-hover fs-5">
                               <tbody>
                                 {data
                                   ? data.map((el) => (
@@ -210,8 +225,10 @@ const Home = () => {
                                         }}
                                         key={el.Pincode}
                                       >
-                                        <td className="px-5">{el.Region}</td>
-                                        <td className="px-5">{el.Pincode}</td>
+                                        <td>
+                                          {el.Region}, {el.Country},{" "}
+                                          {el.Pincode}
+                                        </td>
                                       </tr>
                                     ))
                                   : ""}
@@ -312,7 +329,7 @@ const Home = () => {
                   <div
                     className="modal fade"
                     id="exampleModal"
-                    tabindex="-1"
+                    tabIndex="-1"
                     aria-labelledby="exampleModalLabel"
                     aria-hidden="true"
                   >
@@ -337,20 +354,13 @@ const Home = () => {
                           ></button>
                         </div>
                         <div className="modal-body myGrid myBackground">
-                          <Delivery addTask={addTask} duration={duration} />
+                          <Delivery
+                            addTask={addTask}
+                            duration={duration}
+                            ltoh={ltoh}
+                            htol={htol}
+                          />
                         </div>
-                        {/* <div className="modal-footer">
-                          <button
-                            type="button"
-                            className="btn btn-secondary"
-                            data-bs-dismiss="modal"
-                          >
-                            Close
-                          </button>
-                          <button type="button" className="btn btn-primary">
-                            Save changes
-                          </button>
-                        </div> */}
                       </div>
                     </div>
                   </div>

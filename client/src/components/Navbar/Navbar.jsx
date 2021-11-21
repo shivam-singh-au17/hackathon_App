@@ -1,21 +1,21 @@
-import React, { useState, useEffect } from "react";
-import logo from "../Images/logo.png";
-import BasicPopover from "../Partner/Partner";
 import axios from "axios";
+import React, { useEffect, useState } from "react";
+import logo from "../Images/logo.png";
+import AddPartner from "../Partner/AddPartner";
 import "./Navbar.css";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
-  const [list, setList] = useState([]);
+  const [addTask, setAddTask] = useState([]);
+
+  function getMyTodos() {
+    axios.get(`http://localhost:5000/company`).then((res) => {
+      setAddTask(res.data);
+    });
+  }
 
   useEffect(() => {
-    axios
-      .get("http://localhost:5000/company/")
-      .then((res) => {
-        setList(res.data.map((el) => el.company_name));
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    getMyTodos();
   }, []);
 
   return (
@@ -25,9 +25,9 @@ const Navbar = () => {
         style={{ backgroundColor: "#FF5151" }}
       >
         <div className="container-fluid">
-          <a className="navbar-brand" href="/">
+          <Link className="navbar-brand" to={`/`}>
             <img src={logo} alt="" height="40" />
-          </a>
+          </Link>
           <button
             className="navbar-toggler"
             type="button"
@@ -42,44 +42,41 @@ const Navbar = () => {
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               <li className="nav-item">
-                <a className="nav-link active" aria-current="page" href="/">
-                  Home
-                </a>
-              </li>
-              <li className="nav-item">
-                <BasicPopover />
+                <span
+                  className="nav-link active"
+                  type="button"
+                  data-bs-toggle="modal"
+                  data-bs-target="#staticBackdrop"
+                >
+                  BecomePartners
+                </span>
+                <AddPartner />
               </li>
               <li className="nav-item dropdown">
-                <a
+                <Link
                   className="nav-link dropdown-toggle active"
-                  href="/"
+                  to={`/`}
                   id="navbarDropdown"
                   role="button"
                   data-bs-toggle="dropdown"
                   aria-expanded="false"
                 >
-                  Companies
-                </a>
+                  OurPartners
+                </Link>
                 <ul
                   className="dropdown-menu fs-5"
-                  style={{ backgroundColor: "#FF00B3" }}
+                  style={{ backgroundColor: "#FFFFFF" }}
                   aria-labelledby="navbarDropdown"
                 >
-                  {list?.map((el) => (
-                    <li key={el}>
-                      <a className="dropdown-item" href="/">
-                        {el}
-                      </a>
-                    </li>
-                  ))}
-                  <li>
-                    <hr className="dropdown-divider" />
-                  </li>
-                  <li>
-                    <a className="dropdown-item" href="/">
-                      Something else here
-                    </a>
-                  </li>
+                  {addTask.map((name) => {
+                    return (
+                      <li key={name._id}>
+                        <Link className="dropdown-item" to={`/`}>
+                          {name.company_name}
+                        </Link>
+                      </li>
+                    );
+                  })}
                 </ul>
               </li>
             </ul>
