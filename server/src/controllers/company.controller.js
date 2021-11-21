@@ -82,25 +82,26 @@ router.post( "/price", async ( req, res ) => {
 
     console.log( trucksArray );
 
-    companies.forEach((company) => {
+    companies.forEach( ( company ) => {
+      // console.log( req.body )
       let price;
-      if (Number(req.body.distance >= 1000)) {
+      if ( Number( req.body.distance >= 1000 ) ) {
         price = company.pricing.gte1000 * req.body.distance;
-      } else if (Number(req.body.distance >= 500)) {
+      } else if ( Number( req.body.distance >= 500 ) ) {
         price = company.pricing.gte500 * req.body.distance;
       } else {
         price = company.pricing.lt500 * req.body.distance;
       }
 
-      if (Number(req.body.weight >= 1000)) {
+      if ( Number( req.body.weight >= 1000 ) ) {
         price *= 2;
-      } else if (Number(req.body.weight >= 500)) {
-        price += ~~(price / 2);
+      } else if ( Number( req.body.weight >= 500 ) ) {
+        price += ~~( price / 2 );
       }
 
       company.price = price;
-      priceArray.push(company);
-    });
+      priceArray.push( company );
+    } );
 
     return res.status( 200 ).json( priceArray );
     // const company = await Company.findById(req.body.company_id).lean().exec();

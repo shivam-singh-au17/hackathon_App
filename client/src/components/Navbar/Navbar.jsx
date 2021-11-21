@@ -1,12 +1,22 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import logo from "../Images/logo.png";
 import BasicPopover from "../Partner/Partner";
-import "./Navbar.css"
+import axios from "axios";
+import "./Navbar.css";
 
 const Navbar = () => {
+  const [list, setList] = useState([]);
 
-
-  
+  useEffect(() => {
+    axios
+      .get("http://localhost:5000/company/")
+      .then((res) => {
+        setList(res.data.map((el) => el.company_name));
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
 
   return (
     <div>
@@ -37,9 +47,7 @@ const Navbar = () => {
                 </a>
               </li>
               <li className="nav-item">
-                
-                  <BasicPopover />
-                
+                <BasicPopover />
               </li>
               <li className="nav-item dropdown">
                 <a
@@ -57,26 +65,13 @@ const Navbar = () => {
                   style={{ backgroundColor: "#FF00B3" }}
                   aria-labelledby="navbarDropdown"
                 >
-                  <li>
-                    <a className="dropdown-item" href="/">
-                      Indian Postal Service
-                    </a>
-                  </li>
-                  <li>
-                    <a className="dropdown-item" href="/">
-                      FedEx
-                    </a>
-                  </li>
-                  <li>
-                    <a className="dropdown-item" href="/">
-                      First flight
-                    </a>
-                  </li>
-                  <li>
-                    <a className="dropdown-item" href="/">
-                      DTDC
-                    </a>
-                  </li>
+                  {list?.map((el) => (
+                    <li key={el}>
+                      <a className="dropdown-item" href="/">
+                        {el}
+                      </a>
+                    </li>
+                  ))}
                   <li>
                     <hr className="dropdown-divider" />
                   </li>
