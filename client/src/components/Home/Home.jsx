@@ -87,6 +87,7 @@ const Home = () => {
       .catch((err) => {
         console.log(err);
       });
+      setMyData(iniState);
   };
 
   // const {
