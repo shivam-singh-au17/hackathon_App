@@ -21,11 +21,16 @@ const Home = () => {
   const [queryFrom, setQueryFrom] = useState("");
   const [from, setFrom] = useState("");
   const [backendData, setData] = useState({});
+  console.log(backendData);
   const { loading, error, data } = useFetch(
     `https://api.postalpincode.in/postoffice/${
       queryTo.trim() || queryFrom.trim()
     }`
   );
+
+  // const { loading, error, data } = useFetch(
+  //   `http://localhost:3001/allPinCode?q=${queryTo.trim() || queryFrom.trim()}`
+  // );
 
   const handleChang = (e) => {
     const { name, value, type, checked } = e.target;
@@ -54,56 +59,37 @@ const Home = () => {
     setData({ ...data, to: resTo, from: resFrom, distance, duration });
     axios
       .get(
-        `https://maps.googleapis.com/maps/api/distancematrix/json?origins=${resFrom}||751022&destinations=${resTo}||400061&key=AIzaSyDbBkX5dOz_e9p2kPZVKR3VHtSz3p0cilw`,
+        `https://maps.googleapis.com/maps/api/distancematrix/json?origins=${resFrom}&destinations=${resTo}&key=AIzaSyDbBkX5dOz_e9p2kPZVKR3VHtSz3p0cilw`,
         {
           headers: {},
         }
       )
       .then((res) => {
-
-        distance = ~~(res.data?.rows[0]?.elements[0]?.distance.value / 1000);
+        distance = ~~(res.data?.rows[0]?.elements[0]?.distance.value / 10000);
         duration = res.data?.rows[0]?.elements[0]?.duration.text;
         setDuration(duration);
-         axios
-           .post(
-             "http://localhost:5000/company/price",
+        axios
+          .post(
+            "http://localhost:5000/company/price",
 
-// <<<<<<< HEAD
-//           {
-//             from: resFrom,
-//             to: resTo,
-//             weight: +myData.weight * +myData.qty,
-//             distance: 150,
-//             // company_id: "6198997b6d0a0337acdfec88",
-//           }
-//         )
-//         .then((res) => {
-//           console.log(duration);
-//           setAddTask([...res.data]);
-//         });
-// =======
-             {
-               from: resFrom,
-               to: resTo,
-               weight: +myData.weight * +myData.qty,
-               distance: distance,
-               // company_id: "6198997b6d0a0337acdfec88",
-             }
-           )
-           .then((res) => {
-             console.log(duration);
-             setAddTask([...res.data]);
-           });
-// >>>>>>> 960ee0a24623ac7982c438d8f77662976043dc7b
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-
-   
+            {
+              from: resFrom,
+              to: resTo,
+              weight: +myData.weight * +myData.qty,
+              distance: distance,
+              // company_id: "6198997b6d0a0337acdfec88",
+            }
+          )
+          .then((res) => {
+            setAddTask([...res.data]);
+          });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+      setMyData(iniState);
   };
 
- 
   // const {
   //   cityFrom,
   //   cityTo,
@@ -117,14 +103,14 @@ const Home = () => {
   const { date, qty, weight, dimensionsL, dimensionsW, dimensionsH } = myData;
 
   const ltoh = () => {
-      addTask.sort((a,b) => a.price - b.price);
-      setAddTask([...addTask])
-  }
+    addTask.sort((a, b) => a.price - b.price);
+    setAddTask([...addTask]);
+  };
 
-    const htol = () => {
-      addTask.sort((a,b) => b.price - a.price);
-      setAddTask([...addTask])
-  }
+  const htol = () => {
+    addTask.sort((a, b) => b.price - a.price);
+    setAddTask([...addTask]);
+  };
 
   return (
     <>
@@ -170,7 +156,7 @@ const Home = () => {
                         </div>
                       ) : (
                         <div className="suggestions">
-                          <table className="table table-hover">
+                          <table className="table table-hover fs-5">
                             <tbody>
                               {data
                                 ? data.map((el) => (
@@ -180,10 +166,11 @@ const Home = () => {
                                         setFrom(`${el.Region}-${el.Pincode}`);
                                         setQueryFrom("");
                                       }}
-                                      key={el.Pincode}
+                                      key={el.id}
                                     >
-                                      <td className="px-5">{el.Region}</td>
-                                      <td className="px-5">{el.Pincode}</td>
+                                      <td>
+                                        {el.Region}, {el.Country}, {el.Pincode}
+                                      </td>
                                     </tr>
                                   ))
                                 : ""}
@@ -227,7 +214,7 @@ const Home = () => {
                           </div>
                         ) : (
                           <div className="suggestions">
-                            <table className="table table-hover">
+                            <table className="table table-hover fs-5">
                               <tbody>
                                 {data
                                   ? data.map((el) => (
@@ -239,8 +226,10 @@ const Home = () => {
                                         }}
                                         key={el.Pincode}
                                       >
-                                        <td className="px-5">{el.Region}</td>
-                                        <td className="px-5">{el.Pincode}</td>
+                                        <td>
+                                          {el.Region}, {el.Country},{" "}
+                                          {el.Pincode}
+                                        </td>
                                       </tr>
                                     ))
                                   : ""}
@@ -365,9 +354,13 @@ const Home = () => {
                             aria-label="Close"
                           ></button>
                         </div>
-                        
-                        <div className="modal-body myBackground">
-                          <Delivery addTask={addTask} duration={duration} ltoh={ltoh} htol={htol}/>
+                        <div className="modal-body myGrid myBackground">
+                          <Delivery
+                            addTask={addTask}
+                            duration={duration}
+                            ltoh={ltoh}
+                            htol={htol}
+                          />
                         </div>
                       </div>
                     </div>

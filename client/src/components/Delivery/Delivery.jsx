@@ -6,7 +6,7 @@ import { Button} from "react-bootstrap";
 export const Delivery = ({ addTask, duration, ltoh, htol }) => {
   
   const toggleShowA = () => {
-    alert("Confirm")
+    alert("Your Order is Confirm")
   };
   // const [addTask, setAddTask] = useState([]);
 
@@ -42,13 +42,13 @@ export const Delivery = ({ addTask, duration, ltoh, htol }) => {
   //     getPriceData(el?._id);
   //   });
   // }, []);
-  console.log(duration, addTask);
+  
 
   return (
     <>
       <div>
-        <button onClick={ltoh}>Ascending Price</button>
-        <button onClick={htol}>Descending Price</button>
+        <button style={{backgroundColor:"green"}} className="btn fs-6" onClick={ltoh}>Ascending Price</button>
+        <button style={{backgroundColor:"green"}} className="btn fs-6" onClick={htol}>Descending Price</button>
       </div>
      
       <div className="myGrid">
