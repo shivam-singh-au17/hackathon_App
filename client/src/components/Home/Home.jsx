@@ -102,6 +102,16 @@ const Home = () => {
   // } = myData;
   const { date, qty, weight, dimensionsL, dimensionsW, dimensionsH } = myData;
 
+  const ltoh = () => {
+    addTask.sort((a, b) => a.price - b.price);
+    setAddTask([...addTask]);
+  };
+
+  const htol = () => {
+    addTask.sort((a, b) => b.price - a.price);
+    setAddTask([...addTask]);
+  };
+
   return (
     <>
       <div className="mb-5">
@@ -345,7 +355,12 @@ const Home = () => {
                           ></button>
                         </div>
                         <div className="modal-body myGrid myBackground">
-                          <Delivery addTask={addTask} duration={duration} />
+                          <Delivery
+                            addTask={addTask}
+                            duration={duration}
+                            ltoh={ltoh}
+                            htol={htol}
+                          />
                         </div>
                       </div>
                     </div>

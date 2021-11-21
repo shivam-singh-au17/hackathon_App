@@ -47,8 +47,8 @@ export const Delivery = ({ addTask, duration, ltoh, htol }) => {
   return (
     <>
       <div>
-        <button onClick={ltoh}>Ascending Price</button>
-        <button onClick={htol}>Descending Price</button>
+        <button style={{backgroundColor:"green"}} className="btn fs-6" onClick={ltoh}>Ascending Price</button>
+        <button style={{backgroundColor:"green"}} className="btn fs-6" onClick={htol}>Descending Price</button>
       </div>
      
       <div className="myGrid">
