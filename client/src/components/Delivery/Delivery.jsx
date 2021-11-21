@@ -6,7 +6,7 @@ import { Button} from "react-bootstrap";
 export const Delivery = ({ addTask, duration, ltoh, htol }) => {
   
   const toggleShowA = () => {
-    alert("Confirm")
+    alert("Your Order is Confirm")
   };
   // const [addTask, setAddTask] = useState([]);
 
