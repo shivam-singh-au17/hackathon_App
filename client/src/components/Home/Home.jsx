@@ -81,7 +81,6 @@ const Home = () => {
             }
           )
           .then((res) => {
-            console.log(duration);
             setAddTask([...res.data]);
           });
       })

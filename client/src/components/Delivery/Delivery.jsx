@@ -42,7 +42,7 @@ export const Delivery = ({ addTask, duration, ltoh, htol }) => {
   //     getPriceData(el?._id);
   //   });
   // }, []);
-  console.log(duration, addTask);
+  
 
   return (
     <>

@@ -1,9 +1,22 @@
-import React from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 import logo from "../Images/logo.png";
 import AddPartner from "../Partner/AddPartner";
 import "./Navbar.css";
 
 const Navbar = () => {
+  const [addTask, setAddTask] = useState([]);
+
+  function getMyTodos() {
+    axios.get(`http://localhost:5000/company`).then((res) => {
+      setAddTask(res.data);
+    });
+  }
+
+  useEffect(() => {
+    getMyTodos();
+  }, []);
+
   return (
     <div>
       <nav
@@ -59,26 +72,15 @@ const Navbar = () => {
                   style={{ backgroundColor: "#FFFFFF" }}
                   aria-labelledby="navbarDropdown"
                 >
-                  <li>
-                    <a className="dropdown-item" href="/">
-                      Indian Postal Service
-                    </a>
-                  </li>
-                  <li>
-                    <a className="dropdown-item" href="/">
-                      FedEx
-                    </a>
-                  </li>
-                  <li>
-                    <a className="dropdown-item" href="/">
-                      First flight
-                    </a>
-                  </li>
-                  <li>
-                    <a className="dropdown-item" href="/">
-                      DTDC
-                    </a>
-                  </li>
+                  {addTask.map((name) => {
+                    return (
+                      <li key={name._id}>
+                        <a className="dropdown-item" href="/">
+                          {name.company_name}
+                        </a>
+                      </li>
+                    );
+                  })}
                 </ul>
               </li>
             </ul>
