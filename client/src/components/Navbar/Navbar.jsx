@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import logo from "../Images/logo.png";
 import AddPartner from "../Partner/AddPartner";
 import "./Navbar.css";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const [addTask, setAddTask] = useState([]);
@@ -24,9 +25,9 @@ const Navbar = () => {
         style={{ backgroundColor: "#FF5151" }}
       >
         <div className="container-fluid">
-          <a className="navbar-brand" href="/">
+          <Link className="navbar-brand" to={`/`}>
             <img src={logo} alt="" height="40" />
-          </a>
+          </Link>
           <button
             className="navbar-toggler"
             type="button"
@@ -52,16 +53,16 @@ const Navbar = () => {
                 <AddPartner />
               </li>
               <li className="nav-item dropdown">
-                <a
+                <Link
                   className="nav-link dropdown-toggle active"
-                  href="/"
+                  to={`/`}
                   id="navbarDropdown"
                   role="button"
                   data-bs-toggle="dropdown"
                   aria-expanded="false"
                 >
                   OurPartners
-                </a>
+                </Link>
                 <ul
                   className="dropdown-menu fs-5"
                   style={{ backgroundColor: "#FFFFFF" }}
@@ -70,9 +71,9 @@ const Navbar = () => {
                   {addTask.map((name) => {
                     return (
                       <li key={name._id}>
-                        <a className="dropdown-item" href="/">
+                        <Link className="dropdown-item" to={`/`}>
                           {name.company_name}
-                        </a>
+                        </Link>
                       </li>
                     );
                   })}
