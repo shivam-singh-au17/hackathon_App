@@ -70,7 +70,7 @@ const Home = () => {
         setDuration(duration);
         axios
           .post(
-            "http://localhost:5000/company/price",
+            "https://hackathonserverside.herokuapp.com/company/price",
 
             {
               from: resFrom,

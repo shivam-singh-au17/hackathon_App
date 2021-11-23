@@ -115,7 +115,7 @@ const AddPartner = () => {
                     pincodes_serving: formData.pincodes_serving,
                     pricing: formData.pricing,
                   };
-                  fetch("http://localhost:5000/company", {
+                  fetch("https://hackathonserverside.herokuapp.com/company/", {
                     method: "POST",
                     body: JSON.stringify(data),
                     headers: {

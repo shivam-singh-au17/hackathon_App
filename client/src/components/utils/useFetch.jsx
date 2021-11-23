@@ -29,7 +29,7 @@ export const useFetch = (url) => {
     setLoading(true);
     timeRef.current = setTimeout(() => {
       fetchData(url);
-    }, 600);
+    }, 100);
   }, [url]);
 
   return { loading, error, data };

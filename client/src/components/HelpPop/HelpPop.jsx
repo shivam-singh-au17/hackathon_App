@@ -60,7 +60,7 @@ const HelpPop = () => {
 
   const submitHelpPopup = (e) => {
     e.preventDefault();
-    fetch("https://hackathonserverside.herokuapp.com/appData", {
+    fetch("https://hackathonserverside.herokuapp.com/appData/", {
       method: "POST",
       body: JSON.stringify(helpData),
       headers: {
@@ -103,7 +103,7 @@ const HelpPop = () => {
             Email <span>*</span>
           </label>
           <input
-            type="text"
+            type="email"
             name="email"
             value={email}
             id="email_popup"

@@ -9,9 +9,11 @@ const Navbar = () => {
   const [addTask, setAddTask] = useState([]);
 
   function getMyTodos() {
-    axios.get(`http://localhost:5000/company`).then((res) => {
-      setAddTask(res.data);
-    });
+    axios
+      .get(`https://hackathonserverside.herokuapp.com/company/`)
+      .then((res) => {
+        setAddTask(res.data);
+      });
   }
 
   useEffect(() => {
