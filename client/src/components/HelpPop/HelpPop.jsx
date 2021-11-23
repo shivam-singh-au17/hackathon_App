@@ -60,7 +60,7 @@ const HelpPop = () => {
 
   const submitHelpPopup = (e) => {
     e.preventDefault();
-    fetch("https://hackathonserverside.herokuapp.com/appData", {
+    fetch("https://hackathonserverside.herokuapp.com/appData/", {
       method: "POST",
       body: JSON.stringify(helpData),
       headers: {
