@@ -39,6 +39,7 @@ npm start
 - We used  [HTML-5](https://www.w3schools.com/html/) ,  [CSS-3](https://www.w3schools.com/css/default.asp), [Javascript](https://www.w3schools.com/js/default.asp)  and  [React](https://reactjs.org/docs/getting-started.html)  for front-end.
 - We used  [MongoDB](https://www.mongodb.com/cloud/atlas)  for database.
 - We used  [Node.js](https://nodejs.org/en/)  and  [Express.js](https://expressjs.com/)  library for back end.
+- We used [speech-recognition]() for voice-recognition and voice-typing.
 - And we are also used  [Bootstrap](https://getbootstrap.com/) and [Material UI](https://mui.com/) for designing and layout.
 
 # Tools
@@ -51,9 +52,13 @@ npm start
 -  [Slack](https://slack.com/intl/en-in/) for communication.
 -  [Zoom](https://zoom.us/) for show work.
 
-# Some screenshots of our project
 
-### If you want to see our project click this URL => https://project-damodar.vercel.app/
+# Deployment Link
+
+### If you want to see our project click this URL => https://hackathonapp.vercel.app/
+
+
+# Some screenshots of our project
 
 #### 1. The look of the *HOME* page of our cloned website is as follows.
 ![Screenshot (222)](https://github.com/shivam-singh-au17/hackathon_App/blob/master/Screenshots/Screenshot%20(222).png?raw=true)
@@ -87,17 +92,18 @@ These two challenges improve our abilities to be a good Team Player.</h5>
 **These challenges improve our abilities to be a good Team Player and finally we did the constitution of all the problems together and made our perfect project.**
 
 # Team members and contributors
-**By following a well-structured way, all of us successfully completed our responsibilities before the given time. The members of team DAMODAR are-**
+**By following a well-structured way, all of us successfully completed our responsibilities before the given time. The members of team Code_of_Duty are-**
 
-#### 1. Nilesh Kokate
-**Github:**  [nilpatil7744](https://github.com/nilpatil7744) 
-#### 2. Amit Kumar Mehta
-**Github:**  [amit-web](https://github.com/amit-web) 
-#### 3. Subhash Jha
-**Github:**  [subhash238](https://github.com/subhash238) 
+#### 1. Asutosh Behera
+**Github:**  [asutoshb](https://github.com/asutoshb)
+#### 2. Hardik Thummar
+**Github:**  [HardikThummar97](https://github.com/HardikThummar97) 
+#### 3. Srikanth Reddy
+**Github:**  [SrikanthReddyBV](https://github.com/SrikanthReddyBV) 
+
 
 # Conclusion
-- I would like to thank, all of my team members, Nilesh Kokate, Subhash Jha and Amit Kumar Mehta for their contribution. 
+- I would like to thank, all of my team members, Asutosh Behera, Hardik Thummar and Srikanth Reddy for their contribution. 
 - This is my first group project and I had a great experience with this project because I learned to build a website with people.
 - I’m feeling very proud to get such hard-working team members and also feeling very fortunate for being a part of Masai School because of which I got the experience of cloning such a wonderful website.
 ### Thank you for giving it a read...
