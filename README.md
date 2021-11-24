@@ -14,14 +14,14 @@ git clone https://github.com/shivam-singh-au17/hackathon_App.git
 ```
 ### And then open it in VS Code and then start two Git Bash terminal at the same location. Then enter these two commands manually in first terminal.  
 ```
-cd backendfile
+cd server
 ```
 ```
 npm start
 ```
 ### And then open second Git Bash terminal and then enter these two commands manually in this terminal.  
 ```
-cd projectmedium
+cd client
 ```
 ```
 npm start
