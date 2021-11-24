@@ -10,11 +10,21 @@
 
 ### First you clone or download this project from here.
 ```
-git clone https://github.com/shivam-singh-au17/Project_Damodar.git
+git clone https://github.com/shivam-singh-au17/hackathon_App.git
 ```
-### You have to open this file in VS-code and go to index.html file and open it by the live server, your VS-code must have live-server installed. 
+### And then open it in VS Code and then start two Git Bash terminal at the same location. Then enter these two commands manually in first terminal.  
 ```
-Go Live
+cd backendfile
+```
+```
+npm start
+```
+### And then open second Git Bash terminal and then enter these two commands manually in this terminal.  
+```
+cd projectmedium
+```
+```
+npm start
 ```
 
 # Our Agendas - 
@@ -26,9 +36,10 @@ Go Live
 
 # Technologies Used
 
-- We used  [HTML-5](https://www.w3schools.com/html/) ,  [CSS-3](https://www.w3schools.com/css/default.asp) for front-end.
-- We used  [Javascript](https://www.w3schools.com/js/default.asp) for back end.
-- And we are also used  [Bootstrap](https://getbootstrap.com/) for designing and layout.
+- We used  [HTML-5](https://www.w3schools.com/html/) ,  [CSS-3](https://www.w3schools.com/css/default.asp), [Javascript](https://www.w3schools.com/js/default.asp)  and  [React](https://reactjs.org/docs/getting-started.html)  for front-end.
+- We used  [MongoDB](https://www.mongodb.com/cloud/atlas)  for database.
+- We used  [Node.js](https://nodejs.org/en/)  and  [Express.js](https://expressjs.com/)  library for back end.
+- And we are also used  [Bootstrap](https://getbootstrap.com/) and [Material UI](https://mui.com/) for designing and layout.
 
 # Tools
 
@@ -45,31 +56,24 @@ Go Live
 ### If you want to see our project click this URL => https://project-damodar.vercel.app/
 
 #### 1. The look of the *HOME* page of our cloned website is as follows.
-![Screenshot (192)](https://github.com/shivam-singh-au17/Project_Damodar/blob/master/Screenshots/Screenshot%20(192).png?raw=true)
-
-![Screenshot (196)](https://github.com/shivam-singh-au17/Project_Damodar/blob/master/Screenshots/Screenshot%20(196).png?raw=true)
+![Screenshot (222)](https://github.com/shivam-singh-au17/hackathon_App/blob/master/Screenshots/Screenshot%20(222).png?raw=true)
 
 
 #### 2. The look of the *FEATURES* page of our cloned website is as follows.
-![Screenshot (193)](https://github.com/shivam-singh-au17/Project_Damodar/blob/master/Screenshots/Screenshot%20(193).png?raw=true)
-
-![Screenshot (194)](https://github.com/shivam-singh-au17/Project_Damodar/blob/master/Screenshots/Screenshot%20(194).png?raw=true)
+![Screenshot (223)](https://github.com/shivam-singh-au17/hackathon_App/blob/master/Screenshots/Screenshot%20(223).png?raw=true)
 
 
 #### 3. The look of the *LOGIN* page of our cloned website is as follows.
-![Screenshot (195)](https://github.com/shivam-singh-au17/Project_Damodar/blob/master/Screenshots/Screenshot%20(195).png?raw=true)
+![Screenshot (224)](https://github.com/shivam-singh-au17/hackathon_App/blob/master/Screenshots/Screenshot%20(224).png?raw=true)
 
 
 #### 4. The look of the *PRICING* page of our cloned website is as follows.
-![Screenshot (197)](https://github.com/shivam-singh-au17/Project_Damodar/blob/master/Screenshots/Screenshot%20(197).png?raw=true)
+![Screenshot (225)](https://github.com/shivam-singh-au17/hackathon_App/blob/master/Screenshots/Screenshot%20(225).png?raw=true)
 
 
 #### 5. The look of the *TEMPLATES* page of our cloned website is as follows.
-![Screenshot (198)](https://github.com/shivam-singh-au17/Project_Damodar/blob/master/Screenshots/Screenshot%20(198).png?raw=true)
+![Screenshot (226)](https://github.com/shivam-singh-au17/hackathon_App/blob/master/Screenshots/Screenshot%20(226).png?raw=true)
 
-
-#### 6. The look of the *FOOTER* of our cloned website is as follows.
-![Screenshot (199)](https://github.com/shivam-singh-au17/Project_Damodar/blob/master/Screenshots/Screenshot%20(199).png?raw=true)
 
 ***So this was the project we have created with our efforts. We have added the screenshots for our audience to understand easily.***
 
