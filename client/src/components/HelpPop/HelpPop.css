@@ -70,16 +70,16 @@
   width: 100%;
   box-shadow: rgba(18, 52, 77, 0.05) 0px 1px 2px 0px inset;
   font-size: 1.2rem;
-  font-weight: 600;
   text-align: start;
 }
 
 #contactUsForm-helpPopup textarea[id="tell_us_more_popup"] {
   margin-top: 0.5rem;
+  font-size: 1.2rem;
   height: 10rem;
   width: 100%;
   border-radius: 4px;
-  padding: 1.1rem 0.8rem 1rem 1.2rem;
+  padding: 0.5rem 0.5rem 0.5rem 0.5rem;
   border: 1px solid rgb(207, 215, 223);
   box-shadow: rgba(18, 52, 77, 0.05) 0px 1px 2px 0px inset;
 }
