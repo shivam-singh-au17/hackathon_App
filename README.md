@@ -1,10 +1,10 @@
 # Hackathon (Code of Duty)
 
 
-![Logo](https://github.com/shivam-singh-au17/Project_Damodar/blob/master/Screenshots/animoto.png?raw=true)
+![Logo](https://github.com/shivam-singh-au17/hackathon_App/blob/master/Screenshots/hackathon1.png?raw=true)
 
 
-### Animoto was founded in August 2006 by Jason Hsiao, Brad Jefferson, Steve Clifton and Tom Clifton because of the poor video quality found on the internet. Animoto’s patented Cinematic Artificial Intelligence technology allows users to turn photos, video clips and music into video slideshows. Animoto’s founders include former producers of ABC, MTV, VH1, Comedy Central and the Documentary Group.
+### The goal of a hackathon is to create functioning software or hardware by the end of the event and this is my first hackathon. We created such functionality in this hackathon where people can see the value of courier delivery by different types of courier companies at one place and any user can send their courier at their convenience with the company in which they benefit.
 
 # Steps to browse the project:
 
