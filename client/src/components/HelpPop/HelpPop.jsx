@@ -92,6 +92,7 @@ const HelpPop = () => {
           <label htmlFor="name-popup">Your name</label>
           <input
             type="text"
+            placeholder="Type or click here and say"
             name="name"
             value={name}
             id="name_popup"
@@ -104,6 +105,7 @@ const HelpPop = () => {
           </label>
           <input
             type="email"
+            placeholder="Type or click here and say"
             name="email"
             value={email}
             id="email_popup"
@@ -121,6 +123,7 @@ const HelpPop = () => {
             value={tell_us_more}
             id="tell_us_more_popup"
             cols="30"
+            placeholder="Type or click here and say"
             rows="10"
           ></textarea>
           <button onClick={submitHelpPopup}>Send</button>
