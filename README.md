@@ -34,6 +34,7 @@ npm start
 ```
 
 # Our Agendas - 
+* First of all, we thought that what kind of functionality website we have to build?
 * Breaking the whole work into the smallest divisions according to our strong zone.
 * Setting up the deadline for every individual.
 * Review the code when someone is unable to make the part prominently.
@@ -66,23 +67,23 @@ npm start
 
 # Some screenshots of our project
 
-#### 1. The look of the *HOME* page of our cloned website is as follows.
+#### 1. This is the home page of the site created by us at Hackathon where you can fill in all the details related to our website.
 ![Screenshot (222)](https://github.com/shivam-singh-au17/hackathon_App/blob/master/Screenshots/Screenshot%20(222).png?raw=true)
 
 
-#### 2. The look of the *FEATURES* page of our cloned website is as follows.
+#### 2. This is the help box where you can know the answers to all your questions and you can also write here by speaking.
 ![Screenshot (223)](https://github.com/shivam-singh-au17/hackathon_App/blob/master/Screenshots/Screenshot%20(223).png?raw=true)
 
 
-#### 3. The look of the *LOGIN* page of our cloned website is as follows.
+#### 3. If you want to join with us then you can join us by filling in your details here and we will show your courier details on our website.
 ![Screenshot (224)](https://github.com/shivam-singh-au17/hackathon_App/blob/master/Screenshots/Screenshot%20(224).png?raw=true)
 
 
-#### 4. The look of the *PRICING* page of our cloned website is as follows.
+#### 4. You can see the list of all the companies associated with us by clicking here and know about them.
 ![Screenshot (225)](https://github.com/shivam-singh-au17/hackathon_App/blob/master/Screenshots/Screenshot%20(225).png?raw=true)
 
 
-#### 5. The look of the *TEMPLATES* page of our cloned website is as follows.
+#### 5. When you fill in all the details related to your courier on the main page, after submitting you see this page where you can see how much money is being charged by different companies for delivery of courier at the same place.
 ![Screenshot (226)](https://github.com/shivam-singh-au17/hackathon_App/blob/master/Screenshots/Screenshot%20(226).png?raw=true)
 
 
@@ -110,6 +111,6 @@ These two challenges improve our abilities to be a good Team Player.</h5>
 
 # Conclusion
 - I would like to thank, all of my team members, Asutosh Behera, Hardik Thummar and Srikanth Reddy for their contribution. 
-- This is my first group project and I had a great experience with this project because I learned to build a website with people.
-- I’m feeling very proud to get such hard-working team members and also feeling very fortunate for being a part of Masai School because of which I got the experience of cloning such a wonderful website.
+- This is my first group Hackathon and I had a great experience with this Hackathon because I learned to build a hackathon website with people.
+- I’m feeling very proud to get such hard-working team members and also feeling very fortunate for being a part of Masai School because of which I got the experience of  such a wonderful hackathon website.
 ### Thank you for giving it a read...
