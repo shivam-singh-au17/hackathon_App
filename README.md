@@ -4,7 +4,7 @@
 ![Logo](https://github.com/shivam-singh-au17/hackathon_App/blob/master/Screenshots/hackathon1.png?raw=true)
 
 
-### The goal of a hackathon is to create functioning software or hardware by the end of the event and this is my first hackathon. We created such functionality in this hackathon where people can see the value of courier delivery by different types of courier companies at one place and any user can send their courier at their convenience with the company in which they benefit.
+### This was my first Hackathon event for 2 days and We named our group [Code of Duty](https://github.com/shivam-singh-au17/hackathon_App/). The goal of a hackathon is to create functioning software or hardware by the end of the event and this is my first hackathon. We created such functionality in this hackathon where people can see the value of courier delivery by different types of courier companies at one place and any user can send their courier at their convenience with the company in which they benefit. We have provided the facility to write by speaking here.
 
 # Steps to browse the project:
 
