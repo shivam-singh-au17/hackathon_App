@@ -96,7 +96,6 @@ Distance always matters for group work. As we are from different parts of India,
 As we are using Git collaboration, initially we were facing some technical issues, but continuously co-ordinations, make things easier. <br> <br>
 These two challenges improve our abilities to be a good Team Player.</h5>
 
-**These challenges improve our abilities to be a good Team Player and finally we did the constitution of all the problems together and made our perfect project.**
 
 # Team members and contributors
 **By following a well-structured way, all of us successfully completed our responsibilities before the given time. The members of team Code_of_Duty are-**
