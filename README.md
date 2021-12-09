@@ -1,6 +1,5 @@
 # Hackathon (Code of Duty)
 
-
 ![Logo](https://github.com/shivam-singh-au17/hackathon_App/blob/master/Screenshots/hackathon1.png?raw=true)
 
 
